@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:tns="http://www.jboss.org/drools" id="Definition" targetNamespace="http://www.jboss.org/drools" expressionLanguage="http://www.mvel.org/2.0" typeLanguage="http://www.java.com/javaTypes" exporter="Camunda Modeler" exporterVersion="4.2.0" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <process id="menu" name="Menu" processType="Private" isExecutable="true">
+    <startEvent id="StartMessage" name="Start Message" camunda:asyncBefore="true">
+      <outgoing>SequenceFlow_1vd59vg</outgoing>
+      <messageEventDefinition messageRef="Message_1tqvnqa" />
+    </startEvent>
+    <exclusiveGateway id="ExclusiveGateway_15but3k">
+      <incoming>SequenceFlow_1vd59vg</incoming>
+      <outgoing>SequenceFlow_0kph8tu</outgoing>
+      <outgoing>SequenceFlow_0jz2ih4</outgoing>
+      <outgoing>SequenceFlow_0c8gx1a</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="SequenceFlow_1vd59vg" sourceRef="StartMessage" targetRef="ExclusiveGateway_15but3k" />
+    <sequenceFlow id="SequenceFlow_0kph8tu" sourceRef="ExclusiveGateway_15but3k" targetRef="IntermediateFish">
+      <conditionExpression xsi:type="tFormalExpression">#{fishSelected}</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_0jz2ih4" sourceRef="ExclusiveGateway_15but3k" targetRef="IntermediateMeat">
+      <conditionExpression xsi:type="tFormalExpression">#{meatSelected}</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_0c8gx1a" sourceRef="ExclusiveGateway_15but3k" targetRef="IntermediateVeggie">
+      <conditionExpression xsi:type="tFormalExpression">#{vegetablesSelected}</conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="ExclusiveGateway_1b67jtp">
+      <incoming>SequenceFlow_11f08hg</incoming>
+      <outgoing>SequenceFlow_1vr4t4b</outgoing>
+      <outgoing>SequenceFlow_1ls3ydw</outgoing>
+      <outgoing>SequenceFlow_0yvfznb</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="SequenceFlow_1vr4t4b" sourceRef="ExclusiveGateway_1b67jtp" targetRef="Gnocchi">
+      <conditionExpression xsi:type="tFormalExpression">#{gnocchiSelected}</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_1ls3ydw" sourceRef="ExclusiveGateway_1b67jtp" targetRef="GrilledEggplants">
+      <conditionExpression xsi:type="tFormalExpression">#{eggplantsSelected}</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_0yvfznb" sourceRef="ExclusiveGateway_1b67jtp" targetRef="GreekSalad">
+      <conditionExpression xsi:type="tFormalExpression">#{saladSelected}</conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="ExclusiveGateway_1toxwck">
+      <incoming>SequenceFlow_1ybrul7</incoming>
+      <outgoing>SequenceFlow_166jyag</outgoing>
+      <outgoing>SequenceFlow_1irky4x</outgoing>
+      <outgoing>SequenceFlow_1c2anf3</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="SequenceFlow_166jyag" sourceRef="ExclusiveGateway_1toxwck" targetRef="Tuna">
+      <conditionExpression xsi:type="tFormalExpression">#{tunaSelected}</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_1irky4x" sourceRef="ExclusiveGateway_1toxwck" targetRef="SeaBream">
+      <conditionExpression xsi:type="tFormalExpression">#{seaSelected}</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_1c2anf3" sourceRef="ExclusiveGateway_1toxwck" targetRef="Salmon">
+      <conditionExpression xsi:type="tFormalExpression">#{salmonSelected}</conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="ExclusiveGateway_1lzyjdf">
+      <incoming>SequenceFlow_0r5w0bj</incoming>
+      <outgoing>SequenceFlow_0jlg75f</outgoing>
+      <outgoing>SequenceFlow_057t071</outgoing>
+      <outgoing>SequenceFlow_1ed73le</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="SequenceFlow_0jlg75f" sourceRef="ExclusiveGateway_1lzyjdf" targetRef="Beef">
+      <conditionExpression xsi:type="tFormalExpression">#{beefSelected}</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_057t071" sourceRef="ExclusiveGateway_1lzyjdf" targetRef="Pork">
+      <conditionExpression xsi:type="tFormalExpression">#{porkSelected}</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_1ed73le" sourceRef="ExclusiveGateway_1lzyjdf" targetRef="Chicken">
+      <conditionExpression xsi:type="tFormalExpression">#{chickenSelected}</conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="ExclusiveGateway_1sunkjv">
+      <incoming>SequenceFlow_1ggaxyx</incoming>
+      <incoming>SequenceFlow_1cbylcy</incoming>
+      <incoming>SequenceFlow_0d1t4f7</incoming>
+      <incoming>SequenceFlow_19xj9wg</incoming>
+      <incoming>SequenceFlow_0mf6h2e</incoming>
+      <incoming>SequenceFlow_022gi7n</incoming>
+      <incoming>SequenceFlow_0qzchdk</incoming>
+      <incoming>SequenceFlow_1ep7fym</incoming>
+      <incoming>SequenceFlow_05xce49</incoming>
+      <outgoing>SequenceFlow_1alnoda</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="SequenceFlow_1ggaxyx" sourceRef="Tuna" targetRef="ExclusiveGateway_1sunkjv" />
+    <sequenceFlow id="SequenceFlow_1cbylcy" sourceRef="Salmon" targetRef="ExclusiveGateway_1sunkjv" />
+    <sequenceFlow id="SequenceFlow_0d1t4f7" sourceRef="GrilledEggplants" targetRef="ExclusiveGateway_1sunkjv" />
+    <sequenceFlow id="SequenceFlow_19xj9wg" sourceRef="Gnocchi" targetRef="ExclusiveGateway_1sunkjv" />
+    <sequenceFlow id="SequenceFlow_0mf6h2e" sourceRef="GreekSalad" targetRef="ExclusiveGateway_1sunkjv" />
+    <sequenceFlow id="SequenceFlow_022gi7n" sourceRef="SeaBream" targetRef="ExclusiveGateway_1sunkjv" />
+    <sequenceFlow id="SequenceFlow_0qzchdk" sourceRef="Chicken" targetRef="ExclusiveGateway_1sunkjv" />
+    <sequenceFlow id="SequenceFlow_1ep7fym" sourceRef="Pork" targetRef="ExclusiveGateway_1sunkjv" />
+    <sequenceFlow id="SequenceFlow_05xce49" sourceRef="Beef" targetRef="ExclusiveGateway_1sunkjv" />
+    <endEvent id="EndEvent_0okept6">
+      <incoming>Flow_0i4yiic</incoming>
+    </endEvent>
+    <sequenceFlow id="SequenceFlow_1alnoda" sourceRef="ExclusiveGateway_1sunkjv" targetRef="Activity_1ip84r5" />
+    <sequenceFlow id="SequenceFlow_11f08hg" sourceRef="IntermediateVeggie" targetRef="ExclusiveGateway_1b67jtp" />
+    <intermediateCatchEvent id="IntermediateVeggie" camunda:asyncBefore="true">
+      <incoming>SequenceFlow_0c8gx1a</incoming>
+      <outgoing>SequenceFlow_11f08hg</outgoing>
+      <messageEventDefinition messageRef="Message_1ey2qud" />
+    </intermediateCatchEvent>
+    <sequenceFlow id="SequenceFlow_1ybrul7" sourceRef="IntermediateFish" targetRef="ExclusiveGateway_1toxwck" />
+    <sequenceFlow id="SequenceFlow_0r5w0bj" sourceRef="IntermediateMeat" targetRef="ExclusiveGateway_1lzyjdf" />
+    <intermediateCatchEvent id="IntermediateFish" camunda:asyncBefore="true">
+      <incoming>SequenceFlow_0kph8tu</incoming>
+      <outgoing>SequenceFlow_1ybrul7</outgoing>
+      <messageEventDefinition messageRef="Message_18csf5s" />
+    </intermediateCatchEvent>
+    <intermediateCatchEvent id="IntermediateMeat" camunda:asyncBefore="true">
+      <incoming>SequenceFlow_0jz2ih4</incoming>
+      <outgoing>SequenceFlow_0r5w0bj</outgoing>
+      <messageEventDefinition messageRef="Message_0y6xjy0" />
+    </intermediateCatchEvent>
+    <task id="Pork" name="Pork">
+      <incoming>SequenceFlow_057t071</incoming>
+      <outgoing>SequenceFlow_1ep7fym</outgoing>
+    </task>
+    <task id="Beef" name="Beef">
+      <incoming>SequenceFlow_0jlg75f</incoming>
+      <outgoing>SequenceFlow_05xce49</outgoing>
+    </task>
+    <task id="Chicken" name="Chicken">
+      <incoming>SequenceFlow_1ed73le</incoming>
+      <outgoing>SequenceFlow_0qzchdk</outgoing>
+    </task>
+    <task id="SeaBream" name="Sea bream">
+      <incoming>SequenceFlow_1irky4x</incoming>
+      <outgoing>SequenceFlow_022gi7n</outgoing>
+    </task>
+    <task id="Tuna" name="Tuna">
+      <incoming>SequenceFlow_166jyag</incoming>
+      <outgoing>SequenceFlow_1ggaxyx</outgoing>
+    </task>
+    <task id="Salmon" name="Salmon">
+      <incoming>SequenceFlow_1c2anf3</incoming>
+      <outgoing>SequenceFlow_1cbylcy</outgoing>
+    </task>
+    <task id="GreekSalad" name="Greek salad">
+      <incoming>SequenceFlow_0yvfznb</incoming>
+      <outgoing>SequenceFlow_0mf6h2e</outgoing>
+    </task>
+    <task id="Gnocchi" name="Gnocchi with avocado pesto">
+      <incoming>SequenceFlow_1vr4t4b</incoming>
+      <outgoing>SequenceFlow_19xj9wg</outgoing>
+    </task>
+    <task id="GrilledEggplants" name="Grilled eggplants">
+      <incoming>SequenceFlow_1ls3ydw</incoming>
+      <outgoing>SequenceFlow_0d1t4f7</outgoing>
+    </task>
+    <sequenceFlow id="Flow_1t3tr5p" sourceRef="Activity_1ip84r5" targetRef="Event_0nhp4by" />
+    <serviceTask id="Activity_1ip84r5" name="Prepare food" camunda:class="menu.PrepareFood">
+      <incoming>SequenceFlow_1alnoda</incoming>
+      <outgoing>Flow_1t3tr5p</outgoing>
+    </serviceTask>
+    <sequenceFlow id="Flow_0i4yiic" sourceRef="Event_0nhp4by" targetRef="EndEvent_0okept6" />
+    <intermediateThrowEvent id="Event_0nhp4by" name="food ready">
+      <incoming>Flow_1t3tr5p</incoming>
+      <outgoing>Flow_0i4yiic</outgoing>
+      <messageEventDefinition id="MessageEventDefinition_0gphqu0" camunda:class="menu.FoodReady" />
+    </intermediateThrowEvent>
+  </process>
+  <message id="Message_1tqvnqa" name="StartMessage" />
+  <message id="Message_1ey2qud" name="Message Veggie" />
+  <message id="Message_18csf5s" name="Message Fish" />
+  <message id="Message_0y6xjy0" name="Message Meat" />
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="menu">
+      <bpmndi:BPMNEdge id="SequenceFlow_0r5w0bj_di" bpmnElement="SequenceFlow_0r5w0bj">
+        <di:waypoint x="518" y="1020" />
+        <di:waypoint x="625" y="1020" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ybrul7_di" bpmnElement="SequenceFlow_1ybrul7">
+        <di:waypoint x="518" y="625" />
+        <di:waypoint x="625" y="625" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_11f08hg_di" bpmnElement="SequenceFlow_11f08hg">
+        <di:waypoint x="518" y="232" />
+        <di:waypoint x="625" y="232" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1alnoda_di" bpmnElement="SequenceFlow_1alnoda">
+        <di:waypoint x="965" y="625" />
+        <di:waypoint x="1060" y="625" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_05xce49_di" bpmnElement="SequenceFlow_05xce49">
+        <di:waypoint x="825" y="1020" />
+        <di:waypoint x="940" y="1020" />
+        <di:waypoint x="940" y="650" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ep7fym_di" bpmnElement="SequenceFlow_1ep7fym">
+        <di:waypoint x="825" y="1130" />
+        <di:waypoint x="940" y="1130" />
+        <di:waypoint x="940" y="650" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0qzchdk_di" bpmnElement="SequenceFlow_0qzchdk">
+        <di:waypoint x="825" y="906" />
+        <di:waypoint x="940" y="906" />
+        <di:waypoint x="940" y="650" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_022gi7n_di" bpmnElement="SequenceFlow_022gi7n">
+        <di:waypoint x="825" y="735" />
+        <di:waypoint x="940" y="735" />
+        <di:waypoint x="940" y="650" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0mf6h2e_di" bpmnElement="SequenceFlow_0mf6h2e">
+        <di:waypoint x="825" y="120" />
+        <di:waypoint x="940" y="120" />
+        <di:waypoint x="940" y="600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_19xj9wg_di" bpmnElement="SequenceFlow_19xj9wg">
+        <di:waypoint x="825" y="232" />
+        <di:waypoint x="940" y="232" />
+        <di:waypoint x="940" y="600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0d1t4f7_di" bpmnElement="SequenceFlow_0d1t4f7">
+        <di:waypoint x="825" y="342" />
+        <di:waypoint x="940" y="342" />
+        <di:waypoint x="940" y="600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1cbylcy_di" bpmnElement="SequenceFlow_1cbylcy">
+        <di:waypoint x="825" y="516" />
+        <di:waypoint x="940" y="516" />
+        <di:waypoint x="940" y="600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ggaxyx_di" bpmnElement="SequenceFlow_1ggaxyx">
+        <di:waypoint x="825" y="625" />
+        <di:waypoint x="915" y="625" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ed73le_di" bpmnElement="SequenceFlow_1ed73le">
+        <di:waypoint x="650" y="995" />
+        <di:waypoint x="650" y="906" />
+        <di:waypoint x="725" y="906" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_057t071_di" bpmnElement="SequenceFlow_057t071">
+        <di:waypoint x="650" y="1045" />
+        <di:waypoint x="650" y="1130" />
+        <di:waypoint x="725" y="1130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0jlg75f_di" bpmnElement="SequenceFlow_0jlg75f">
+        <di:waypoint x="675" y="1020" />
+        <di:waypoint x="725" y="1020" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1c2anf3_di" bpmnElement="SequenceFlow_1c2anf3">
+        <di:waypoint x="650" y="600" />
+        <di:waypoint x="650" y="516" />
+        <di:waypoint x="725" y="516" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1irky4x_di" bpmnElement="SequenceFlow_1irky4x">
+        <di:waypoint x="650" y="650" />
+        <di:waypoint x="650" y="735" />
+        <di:waypoint x="725" y="735" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_166jyag_di" bpmnElement="SequenceFlow_166jyag">
+        <di:waypoint x="675" y="625" />
+        <di:waypoint x="725" y="625" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0yvfznb_di" bpmnElement="SequenceFlow_0yvfznb">
+        <di:waypoint x="650" y="207" />
+        <di:waypoint x="650" y="120" />
+        <di:waypoint x="725" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ls3ydw_di" bpmnElement="SequenceFlow_1ls3ydw">
+        <di:waypoint x="650" y="257" />
+        <di:waypoint x="650" y="342" />
+        <di:waypoint x="725" y="342" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1vr4t4b_di" bpmnElement="SequenceFlow_1vr4t4b">
+        <di:waypoint x="675" y="232" />
+        <di:waypoint x="725" y="232" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0c8gx1a_di" bpmnElement="SequenceFlow_0c8gx1a">
+        <di:waypoint x="259" y="600" />
+        <di:waypoint x="259" y="232" />
+        <di:waypoint x="482" y="232" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0jz2ih4_di" bpmnElement="SequenceFlow_0jz2ih4">
+        <di:waypoint x="259" y="650" />
+        <di:waypoint x="259" y="1020" />
+        <di:waypoint x="482" y="1020" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0kph8tu_di" bpmnElement="SequenceFlow_0kph8tu">
+        <di:waypoint x="284" y="625" />
+        <di:waypoint x="482" y="625" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1vd59vg_di" bpmnElement="SequenceFlow_1vd59vg">
+        <di:waypoint x="184" y="625" />
+        <di:waypoint x="234" y="625" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1t3tr5p_di" bpmnElement="Flow_1t3tr5p">
+        <di:waypoint x="1160" y="625" />
+        <di:waypoint x="1262" y="625" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0i4yiic_di" bpmnElement="Flow_0i4yiic">
+        <di:waypoint x="1298" y="625" />
+        <di:waypoint x="1422" y="625" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_0trowxl_di" bpmnElement="StartMessage">
+        <dc:Bounds x="148" y="607" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="132" y="650" width="71" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_15but3k_di" bpmnElement="ExclusiveGateway_15but3k" isMarkerVisible="true">
+        <dc:Bounds x="234" y="600" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_1b67jtp_di" bpmnElement="ExclusiveGateway_1b67jtp" isMarkerVisible="true">
+        <dc:Bounds x="625" y="207" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_1toxwck_di" bpmnElement="ExclusiveGateway_1toxwck" isMarkerVisible="true">
+        <dc:Bounds x="625" y="600" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_1lzyjdf_di" bpmnElement="ExclusiveGateway_1lzyjdf" isMarkerVisible="true">
+        <dc:Bounds x="625" y="995" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_0zzzex0_di" bpmnElement="IntermediateVeggie">
+        <dc:Bounds x="482" y="214" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="508" y="307" width="62" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_13hf91k_di" bpmnElement="IntermediateFish">
+        <dc:Bounds x="482" y="607" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="497" y="700" width="85" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_1ufxnaj_di" bpmnElement="IntermediateMeat">
+        <dc:Bounds x="482" y="1002" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="495" y="1095" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0tf7djt_di" bpmnElement="Pork">
+        <dc:Bounds x="725" y="1090" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vglwm6_di" bpmnElement="Beef">
+        <dc:Bounds x="725" y="980" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1djlys7_di" bpmnElement="Chicken">
+        <dc:Bounds x="725" y="866" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02mry58_di" bpmnElement="SeaBream">
+        <dc:Bounds x="725" y="695" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1lzg45q_di" bpmnElement="Tuna">
+        <dc:Bounds x="725" y="585" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ug4i3w_di" bpmnElement="Salmon">
+        <dc:Bounds x="725" y="476" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19v18ue_di" bpmnElement="GreekSalad">
+        <dc:Bounds x="725" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ptasmb_di" bpmnElement="Gnocchi">
+        <dc:Bounds x="725" y="192" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03y1prh_di" bpmnElement="GrilledEggplants">
+        <dc:Bounds x="725" y="302" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_1sunkjv_di" bpmnElement="ExclusiveGateway_1sunkjv" isMarkerVisible="true">
+        <dc:Bounds x="915" y="600" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1spxn0s_di" bpmnElement="Activity_1ip84r5">
+        <dc:Bounds x="1060" y="585" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0okept6_di" bpmnElement="EndEvent_0okept6">
+        <dc:Bounds x="1422" y="607" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1131" y="700" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0v2ion4_di" bpmnElement="Event_0nhp4by">
+        <dc:Bounds x="1262" y="607" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1254" y="650" width="52" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

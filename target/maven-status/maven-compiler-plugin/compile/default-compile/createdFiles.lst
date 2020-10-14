@@ -1,2 +1,5 @@
 org\camunda\bom\getstarted\atscamunda\AtsCamundaApp.class
+menu\FoodReady.class
+menu\Food.class
 org\camunda\bom\getstarted\atscamunda\Message.class
+menu\PrepareFood.class
